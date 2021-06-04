@@ -22,11 +22,6 @@ const User = (props) => {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    connectToUsersAPI()
-    connectToReposAPI()
-  }, [])
-
   const connectToReposAPI = async() => {
     const response = await fetch(`https://api.github.com/users/${props.match.params.username}/repos`)
     const data = await response.json()
@@ -56,6 +51,11 @@ const User = (props) => {
     }
     setUser(data)
   }
+
+  useEffect(() => {
+    connectToUsersAPI()
+    connectToReposAPI()
+  }, [])
 
   if(!user){
     return(
