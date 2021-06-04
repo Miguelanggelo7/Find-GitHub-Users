@@ -1,0 +1,31 @@
+.paperContainer {
+  margin: 20pt;
+}
+
+.infoContainer {
+  margin-top: 30pt;
+}
+
+.containerCollapse{
+  justify-content: left;
+}
+
+.separator {
+  margin:10pt;
+}
+
+.divFlex {
+  display: inline-flex;
+}
+
+.divFlex2 {
+  display: inline-flex;
+  margin-left: -100pt;
+}
+
+.results {
+  display: flex;
+  text-align: center;
+  margin: 20pt;
+  justify-content: center;
+}

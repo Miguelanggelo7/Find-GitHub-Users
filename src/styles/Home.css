@@ -1,0 +1,20 @@
+body {
+  font-family: sans-serif;
+  background-color: #DDA0DD;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  text-align: center;
+  margin: 20pt;
+  align-items: center;
+  justify-content: center;
+}
+
+.Results {
+  display: flex;
+  text-align: center;
+  margin: 20pt;
+  justify-content: center;
+}
