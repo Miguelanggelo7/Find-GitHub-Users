@@ -11,7 +11,8 @@ import {
   ListItemAvatar,
   IconButton,
   Paper,
-  Typography
+  Typography,
+  LinearProgress
 } from "@material-ui/core"
 import { Link } from 'react-router-dom';
 
@@ -19,8 +20,12 @@ const Home = () => {
 
   const [username, setUsername] = useState("")
   const [users, setUsers] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  
 
   const connectAPI = async () => {
+    setLoading(true)
     const response = await fetch(`https://api.github.com/search/users?q=${username}`)
     const data = await response.json()
     if(!response.ok){
@@ -31,10 +36,12 @@ const Home = () => {
         Code to handle error 
         ...
       */
+      setLoading(false)
       return
     }
     if(data.total_count > 0) setUsers(data.items)
     else setUsers(null)
+    setLoading(false)
   }
 
   const handleClick = () => {
@@ -74,6 +81,12 @@ const Home = () => {
     )
   }
 
+  if(loading) {
+    return(
+      <LinearProgress />
+    )
+  }
+
   return (
     <div className="container">
       <div className="searchBar">
@@ -95,7 +108,9 @@ const Home = () => {
         {
           users ? 
           renderList() :
-          <Typography>Users will appear below, just type an existing username and click on the search button.</Typography>
+          <Typography style={{color: '#AAA6CA'}}>
+            Users will appear below, just type an existing username and click on the search button.
+          </Typography>
         }
       </div>
     </div>

@@ -1,15 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {
-  CircularProgress,
+  LinearProgress,
   ListItem,
   Avatar,
   Typography,
-  ListItemAvatar,
   ListItemText,
   Paper,
   Divider,
-  List,
-  ListSubheader
 } from '@material-ui/core'
 import '../styles/User.css';
 import Collapse from '@material-ui/core/Collapse';
@@ -62,7 +59,7 @@ const User = (props) => {
 
   if(!user){
     return(
-      <CircularProgress />
+      <LinearProgress />
     )
   }
 
@@ -107,19 +104,24 @@ const User = (props) => {
               {
                 user.bio?
                 (<Typography variant="subtitle">
-                  Pues vivo en san felix si jaja que te puedo decir xdxd
+                  {user.bio}
                 </Typography>) 
                 :
-                (<Typography variant="subtitle">
-                  Pues vivo en san felix si jaja que te puedo decir xdxd
+                (<Typography  
+                  variant="subtitle" 
+                  style={{fontStyle: 'italic', color: 'gray'}}
+                  >
+                There's not Bio to show
                 </Typography>) 
               }
             </div>
           </div>
           <div className="repos">
-             <ListItem button onClick={handleClick}>
+            <ListItem button onClick={handleClick}>
                 <ListItemText>
-                  <Typography variant="button">{open ? "Ocultar Repositorios" : "Mostrar Repositorios"}</Typography>
+                  <Typography variant="button">
+                    {open ? "Hide repositories" : "Show repositories"}
+                  </Typography>
                 </ListItemText>
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
